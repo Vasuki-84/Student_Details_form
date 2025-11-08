@@ -1,0 +1,10 @@
+{
+    "studentDetails":[
+        {
+            "id":1,
+            "name":"Vasu",
+            "place":"chennai",
+            "phone":12345677
+
+    }]
+}
