@@ -11,8 +11,8 @@ function App() {
     <div>
      
       <Routes>
-        <Route path="/" element={ <Home />}/>
-        <Route path="/studentTable" element={<StudentTable />} />
+        {/* <Route path="/" element={ <Home />}/> */}
+        <Route path="/" element={<StudentTable />} />
         <Route path="/createStudent" element={<CreateStudent />} />
         <Route path="/editStudent/:studentid" element={<EditStudent />} />
         <Route path="/ViewDetails/:studentid" element={<ViewDetails />} />
