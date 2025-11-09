@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 
 function CreateStudent() {
@@ -11,23 +12,36 @@ function CreateStudent() {
   const [validation,setValidation] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e)=> {
-    e.preventDefault();
-    const studentData = {id,name,place,phone};
-    fetch("http://localhost:5000/studentDetails",{method:'POST',
-        headers:{
-            "content-type":"application/json"
-        },
-        body:JSON.stringify(studentData)
-    })
+//   const handleSubmit = (e)=> {
+//     e.preventDefault();
+//     const studentData = {id,name,place,phone};
+//     fetch("http://localhost:5000/studentDetails",{method:'POST',
+//         headers:{
+//             "content-type":"application/json"
+//         },
+//         body:JSON.stringify(studentData)
+//     })
     
-    .then((res)=>{alert("Student data saved successfully..");
-        navigate("/")
-    })
+//     .then((res)=>{alert("Student data saved successfully..");
+//         navigate("/")
+//     })
 
-    .catch((err)=>console.log(err.message))
+//     .catch((err)=>console.log(err.message))
 
-}
+// }
+   const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const studentData = { id, name, place, phone };
+
+    try {
+      await axios.post("http://localhost:5000/studentDetails", studentData);
+      alert("Student data saved successfully..");
+      navigate("/");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <div className="mx-auto border shadow-lg mx-auto max-w-md p-4  mt-10">

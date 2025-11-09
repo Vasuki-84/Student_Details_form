@@ -1,52 +1,22 @@
 {
   "studentDetails": [
     {
-      "id": 1,
+      "id": "1",
+      "name": "Vasu",
+      "place": "chennai",
+      "phone": 12345677
+    },
+      {
+      "id": "1",
       "name": "Vasu",
       "place": "chennai",
       "phone": 12345677
     },
     {
-      "id": 1,
+      "id": "1",
       "name": "Vasu",
       "place": "chennai",
       "phone": 12345677
-    },
-    {
-      "id": "14",
-      "name": "Vasuki T",
-      "place": "chennai",
-      "phone": "6369589395"
-    },
-    {
-      "id": "14",
-      "name": "saro",
-      "place": "chennai",
-      "phone": "45656"
-    },
-    {
-      "id": "14",
-      "name": "saro",
-      "place": "chennai",
-      "phone": "45656"
-    },
-    {
-      "id": "14",
-      "name": "Vasuki T",
-      "place": "chennai",
-      "phone": "3456"
-    },
-    {
-      "id": "3",
-      "name": "dfdg",
-      "place": "sdfg",
-      "phone": "sdfgfg"
-    },
-    {
-      "id": "3",
-      "name": "vasuki",
-      "place": "chennai",
-      "phone": "475748382"
     }
   ]
 }
