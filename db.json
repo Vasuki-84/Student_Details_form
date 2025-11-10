@@ -4,19 +4,19 @@
       "id": "1",
       "name": "Vasu",
       "place": "chennai",
-      "phone": 12345677
-    },
-      {
-      "id": "1",
-      "name": "Vasu",
-      "place": "chennai",
-      "phone": 12345677
+      "phone": "1234"
     },
     {
-      "id": "1",
-      "name": "Vasu",
+      "id": "14",
+      "name": "Vasuki T",
       "place": "chennai",
-      "phone": 12345677
+      "phone": "2345466"
+    },
+    {
+      "id": "14",
+      "name": "saro",
+      "place": "mysore",
+      "phone": "2345"
     }
   ]
 }

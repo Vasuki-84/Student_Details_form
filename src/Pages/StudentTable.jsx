@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link , useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function StudentTable() {
@@ -9,16 +9,16 @@ function StudentTable() {
 
   //useEffect() is a hook that allows us to run code after the component has rendered.
   useEffect(() => {
-     const fetchData = async () => {
-    try {
-      const res = await axios.get("http://localhost:5000/studentDetails");
-      setStudentDetails(res.data);  
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-
-  fetchData();
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/studentDetails");
+        setStudentDetails(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+``
+    fetchData();
   }, []);
 
   // useEffect(() => {
@@ -29,7 +29,25 @@ function StudentTable() {
   // }, []);
 
   const DisplayDetails = (id) => {
-    navigate("/ViewDetails/:studentid")
+    navigate(`/viewStudent/${id}`);
+  };
+  const EditDetails = (id) => {
+    navigate(`/editStudent/${id}`);
+  };
+
+  const RemoveDetails = async (id) => {
+    if (window.confirm("are you you want to delete?")) {
+      try {
+        const res = await axios.delete(
+          `http://localhost:5000/studentDetails/${id}`
+        );
+        //  Update UI (without reload)
+        setStudentDetails((prev) => prev.filter((item) => item.id !== id));
+        alert("remove student data successfully");
+      } catch (err) {
+        console.log(err.message);
+      }
+    }
   };
 
   return (
@@ -54,10 +72,10 @@ function StudentTable() {
           </thead>
           <tbody>
             {studentDetails &&
-              studentDetails.map((item) => (
+              studentDetails.map((item,index) => (
                 <tr key={item.id}>
                   <td className="border  px-5 py-2 border-gray-600 ">
-                    {item.id}
+                    {index+1}
                   </td>
                   <td className="border  px-5 py-2 border-gray-600 ">
                     {item.name}
@@ -78,11 +96,19 @@ function StudentTable() {
                     </Link>
                     <Link
                       to={`/editStudent/${item.id}`}
+                      onClick={() => {
+                        EditDetails(item.id);
+                      }}
                       className="btn bg-gray-500 mx-3 px-2 py-1 rounded-sm"
                     >
                       Edit
                     </Link>
-                    <Link className="btn bg-red-500 mx-3 px-2 py-1 rounded-sm">
+                    <Link
+                      onClick={() => {
+                        RemoveDetails(item.id);
+                      }}
+                      className="btn bg-red-500 mx-3 px-2 py-1 rounded-sm"
+                    >
                       Delete
                     </Link>
                   </td>
