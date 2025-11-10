@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function StudentTable() {
   // useState() - mount, update , unmount  values
   const [studentDetails, setStudentDetails] = useState([]);
+  const navigate = useNavigate();
 
   //useEffect() is a hook that allows us to run code after the component has rendered.
   useEffect(() => {
      const fetchData = async () => {
     try {
       const res = await axios.get("http://localhost:5000/studentDetails");
-      setStudentDetails(res.data);   // ✅ res.data contains the response data
+      setStudentDetails(res.data);  
     } catch (err) {
       console.log(err.message);
     }
   };
 
-  fetchData();  // ✅ call the async function
+  fetchData();
   }, []);
 
   // useEffect(() => {
@@ -28,7 +29,7 @@ function StudentTable() {
   // }, []);
 
   const DisplayDetails = (id) => {
-    console.log(id);
+    navigate("/ViewDetails/:studentid")
   };
 
   return (
